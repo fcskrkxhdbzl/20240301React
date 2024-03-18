@@ -68,7 +68,7 @@ const Post = () => {
                 <div>
                   <img
                     key={index}
-                    src={require(`../assets/${item}.jpg`)}
+                    src={require(`../assets/testColor/${item}.jpg`)}
                     style={imgStyle}
                   />
                 </div>

@@ -1,0 +1,4 @@
+ul.page-list {
+  display: flex;
+  justify-content: space-evenly;
+}
