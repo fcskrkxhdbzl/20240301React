@@ -1,0 +1,75 @@
+/* antd tag style */
+.headerStyle {
+  text-align: center;
+  color: #000;
+  height: 64px;
+  padding-inline: 10px;
+  line-height: 64px;
+  background-color: #fff;
+  border: 2px solid #000;
+}
+.contentStyle {
+  text-align: center;
+  min-height: 120px;
+  line-height: 120px;
+  color: #000;
+  background-color: #fff;
+  border: 2px solid #000;
+}
+.siderStyle {
+  border: 2px solid #000;
+}
+.footerStyle {
+  text-align: left;
+  color: #fff;
+  background-color: #fff;
+  border: 2px solid #000;
+}
+.layoutStyle {
+  border-radius: 8px;
+  overflow: hidden;
+  width: calc(100% - 8px);
+  max-width: calc(100% - 8px);
+}
+.flexStyle {
+  margin: 5%, 10%;
+  height: 80vh;
+}
+/**/
+
+/* 게시물 상세 왼쪽 */
+.imgDiv img {
+  width: 572px;
+  height: 464px;
+  object-fit: cover;
+}
+/**/
+
+/* 게시물 상세 오른쪽 (Header) */
+.postHeaderDiv {
+  display: flex;
+  padding: 15px 1px;
+}
+.postHeaderDiv div {
+  line-height: normal;
+}
+.postHeaderDiv span {
+  margin: 0px 10px;
+}
+.postHeaderDiv > div > img {
+  width: 30px;
+}
+/**/
+
+/* 게시물 상세 오른쪽 (Content) */
+/**/
+
+/* 게시물 상세 오른쪽 (Footer) */
+.postFooterDiv {
+  margin: 0;
+  padding: 0;
+}
+.postFooterDiv img {
+  width: 30px;
+}
+/**/
