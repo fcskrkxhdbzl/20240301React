@@ -1,30 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../styles/Post.css";
 
 const PostInputImage = (props) => {
   //변수
-  //const [selImgUrlList, setSelImgUrlList] = useState([]);
   const [selImgs, setSelImgs] = useState([]);
   const [fileName, setFileName] = useState([]);
   const propdata = props.setUpImgUrlList;
-  useEffect(() => {}, [selImgs]);
-  //함수
+
+  // 함수(f_fileList) + useEffect
   const f_fileList = (e) => {
-    console.log(e.target.files);
-    setSelImgs(e.target.files);
+    setSelImgs(e.target.files); //FileList라는 객체 담기
+  };
+  useEffect(() => {
     let tempData = [];
     let fileNameArr = [];
-    //let tempData = [...selImgUrlList];
     for (let i = 0; i < selImgs.length; i++) {
+      console.log("유즈이펙트당");
       const item = URL.createObjectURL(selImgs[i]);
       tempData.push(item);
       fileNameArr.push(selImgs[i].name);
-      console.log("for문안에서 실행횟수count");
     }
-    console.log("for끝나고, selImgUrlList", tempData);
-    propdata(tempData);
     setFileName(fileNameArr);
-  };
+    propdata(tempData);
+  }, [selImgs]);
 
   return (
     <div>
@@ -35,19 +33,14 @@ const PostInputImage = (props) => {
         type="file"
         id="upFile"
         multiple
-        // style={{ display: "none" }}
+        style={{ display: "none" }}
         onChange={f_fileList}
       ></input>
       <ul>
-        {fileName.map((item) => (
-          <li>{item}</li>
+        {fileName.map((item, index) => (
+          <li key={index}>::::{item}</li>
         ))}
       </ul>
-      {/* {selImgUrlList.map((item, index) => (
-        <div key={index}>
-          <img src={item} />
-        </div>
-      ))} */}
     </div>
   );
 };
