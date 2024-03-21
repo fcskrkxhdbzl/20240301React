@@ -8,12 +8,8 @@ const PostUserInfo = (props) => {
   return (
     <>
       <div className="postHeaderDiv">
-        <div>
-          <img src={require(`../assets/${profile}.jpg`)} />
-        </div>
-        <div>
-          <span>{profileName}</span>
-        </div>
+        <img src={require(`../assets/${profile}.jpg`)} />
+        <span>{profileName}</span>
       </div>
     </>
   );
