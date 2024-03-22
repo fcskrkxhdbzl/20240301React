@@ -1,8 +1,6 @@
 import Article from "./../components/explore/Article";
-import DummyData from "./../constants/explore/dummy_data.json";
 import { useEffect, useRef, useState } from "react";
-// import axiosConfig from "services/axiosConfig";
-import exploreApi from "services/ExploreApi";
+import axiosConfig from "services/axiosConfig";
 
 const Explore = () => {
   const targetRef = useRef();
@@ -16,19 +14,20 @@ const Explore = () => {
     if (isLoading) {
       return false;
     }
+
     // 로딩 중이 아니라면 로딩 상태로 만들기
     setIsLoading(true);
+
     // 데이터 불러오기
     console.log(page);
     const url = `https://api.thedogapi.com/v1/images/search?size=small&format=json&has_breeds=true&order=ASC&page=${page}&limit=10`;
-    // await axiosConfig.get(url).then((res) => {
-    //   if (res.data && res.data.length > 0) {
-    //     setDogDataList((prevData) => {
-    //       return prevData.concat(res.data);
-    //     });
-    //   }
-    // });
-    await exploreApi.getDogList(url, setDogDataList);
+    await axiosConfig.get(url).then((res) => {
+      if (res.data && res.data.length > 0) {
+        setDogDataList((prevData) => {
+          return prevData.concat(res.data);
+        });
+      }
+    });
 
     // 로딩 상태 끝내기
     setIsLoading(false);
@@ -40,6 +39,7 @@ const Explore = () => {
     if (isLoading) {
       return false;
     }
+
     // 페이지 추가
     setPage((prevPage) => {
       return prevPage + 1;
@@ -64,30 +64,13 @@ const Explore = () => {
   }, [page]);
 
   // 게시글 목록을 출력할 요소 리스트로 만들기
-  const articleList = DummyData.map((ele, idx, arr) => {
+  const articleList = dogDataList.map((ele, idx, arr) => {
     return <Article article={ele} />;
   });
 
-  const imgList = dogDataList.map((ele, idx, arr) => {
-    return (
-      <div>
-        <div>이름: {ele.id}</div>
-        <div>
-          <img src={ele.url} style={{ height: "300px", width: "300px" }} />
-        </div>
-      </div>
-    );
-  });
-  const testHandler = () => {
-    exploreApi.testHandler({ id: "hello", pw: "pass" });
-  };
   return (
     <div className="explore">
-      <div>
-        <button onClick={testHandler}>run test</button>
-      </div>
       {articleList}
-      {imgList}
       <div className="view-target" id="view-target" ref={targetRef}>
         <h1>target here</h1>
       </div>

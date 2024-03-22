@@ -23,8 +23,9 @@ div.feed_board {
   text-align: left;
 
   flex: 6.5;
-  margin-right: 15px;
   width: 30rem;
+  margin-right: 15px;
+  margin-top: 3rem;
 }
 
 /* FEED - common */
@@ -129,6 +130,11 @@ div.feed_board {
 
 .feed_imgs p .txt_id {
   margin-left: 10px;
+}
+
+.feed_imgs .contents_img {
+  width: 100%;
+  aspect-ratio: 1/1;
 }
 
 /* FEED - feed text */
