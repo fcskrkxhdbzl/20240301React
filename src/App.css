@@ -36,3 +36,43 @@
     transform: rotate(360deg);
   }
 }
+
+.modalcontrol > div:nth-child(2) > div:nth-child(1) > div:nth-child(4) {
+  background-color: black;
+  display: none;
+}
+
+.modal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-button {
+  background-color: white;
+  border-color: white;
+  color: black;
+}
+
+.custom-button {
+  width: 100px; /* 버튼의 너비 */
+  height: 40px; /* 버튼의 높이 */
+  line-height: 40px; /* 버튼의 높이와 일치하는 줄 높이 설정 */
+  padding: 0 20px; /* 버튼의 내부 여백 설정 */
+}
+
+.custom-button .anticon {
+  font-size: 16px; /* 스핀 아이콘의 크기 */
+  margin-right: 8px; /* 스핀 아이콘과 버튼 텍스트 사이의 간격 설정 */
+}
+/* .modalcontrol {
+  width: 30%;
+  height: 30%;
+}
+
+.ant-modal-body {
+  max-height: calc (100vh - 200px);
+  overflow-y: hidden;
+}  */
+
+/* .ant-modal {
+  overflow-y: initial limportant;
+} */
