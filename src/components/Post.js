@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Flex, Layout, Carousel, Modal } from "antd";
 import "../styles/Post.css";
@@ -6,36 +6,32 @@ import "../styles/Post.css";
 import PostUserInfo from "./PostUserInfo.js";
 import PostButton from "./PostButton.js";
 import PostComment from "./PostComment.js";
+import axiosConfig from "services/axiosConfig";
 
-//// useParams()로 가져온 post/:id로 백단에서 받아올 정보들: 게시물작성유저정보/게시물내용/게시물사진/ (백)
+//// props로 받은 게시물id로 백단에서 받아올 정보들: 게시물작성유저정보/게시물내용/게시물사진/ (백)
 const imgArr = ["red", "orange", "yellow", "green", "blue", "sodomy", "purple"];
-const writeInfoaxios = {
-  writerProfile: "unknown",
-  writer: "pupu",
-  writeContent:
-    "푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩푸딩마싯게따",
-  writeDate: "2024.03.16",
-};
-const commentInfoaxios = [
-  {
-    writernum: 3,
-    writerProfile: "unknown2",
-    writer: "consumer",
-    writeContent: "바나나푸딩바나나푸딩바나나푸딩바나나푸딩",
-    writeDate: "2024.03.18",
-    fewDay: 0, // 작성일-now = 작성경과일 계산된 거 받아오기
-    addlike: 0,
-  },
-  {
-    writernum: 2,
-    writerProfile: "unknown2",
-    writer: "consumer2",
-    writeContent: "딸기푸딩딸기푸딩딸기푸딩딸기푸딩",
-    writeDate: "2024.03.18",
-    fewDay: 0, // 작성일-now = 작성경과일 계산된 거 받아오기
-    addlike: 0,
-  },
-];
+
+// const commentInfoaxios = [
+//   {
+//     writernum: 3,
+//     image: "circle_1",
+//     writer: "consumer",
+//     writeContent: "바나나푸딩바나나푸딩바나나푸딩바나나푸딩",
+//     writeDate: "2024.03.18",
+//     fewDay: 0, // 작성일-now = 작성경과일 계산된 거 받아오기
+//     addlike: 0,
+//   },
+//   {
+//     writernum: 2,
+//     image: "circle_1",
+//     writer: "consumer2",
+//     writeContent: "딸기푸딩딸기푸딩딸기푸딩딸기푸딩",
+//     writeDate: "2024.03.18",
+//     fewDay: 0, // 작성일-now = 작성경과일 계산된 거 받아오기
+//     addlike: 0,
+//   },
+// ];
+
 //
 //
 //
@@ -43,12 +39,75 @@ const commentInfoaxios = [
 //
 //
 
-const Post = () => {
-  const param = useParams();
-  console.log("현재상세페이지의 파라미터값  :", param);
+// home.js에서 props (props.currIndex) 받기
+const Post = (props) => {
+  const postId = props.currIndex;
+  // useEffect????? 확인좀
+  useEffect(() => {
+    postDetailAxios();
+    //commentAxios();
+  }, []);
+  const postDetailAxios = async () => {
+    await axiosConfig
+      .post(
+        "postDetail",
+        JSON.stringify({ postId: "hello", postNo: "world" })
+        // {
+        //   headers: { "Content-Type": "application/json" },
+        // }
+      )
+      .then((res) => {
+        console.log(res.data);
+        setWriteInfoAxios(res.data);
+      })
+      .catch((error) => {
+        console.log("error탐", error);
+      });
+  };
+  const commentAxios = async () => {
+    await axiosConfig
+      .post("commentList", null, { params: { postNo: postId } })
+      .then((res) => {
+        console.log("commentresdasta::::::", res.data);
+        setCommentInfoAxios(res.data);
+      })
+      .catch((error) => {
+        console.log(error.config);
+      });
+  };
 
   // 변수
   const { Header, Footer, Sider, Content } = Layout;
+  const [writeInfoAxios, setWriteInfoAxios] = useState({
+    post: {
+      post_no: 0,
+      post_content: "",
+      user_no: 0,
+      post_new_date: "",
+      post_up_date: "",
+    },
+    diffDate: "",
+  });
+  const [commentInfoAxios, setCommentInfoAxios] = useState([]);
+  const [dayShow, setDayShow] = useState();
+  const [image, setImage] = useState(["man", "circle_1"]);
+
+  useEffect(() => {
+    const diff = Math.abs(writeInfoAxios.diffDate);
+    switch (diff !== "") {
+      case diff < 60:
+        console.log("초전이다");
+        return setDayShow(diff + "초전");
+      case diff >= 60 && diff < 3600:
+        console.log(diff + "분전이다");
+        return setDayShow(Math.round(diff / 60, 0) + "분전");
+      case 3600 <= diff:
+        console.log("시전이다");
+        return setDayShow(Math.round(diff / 3600, 0) + "시간전");
+      default:
+        return console.log("else다 diff값 이상하당 ''인가봐!");
+    }
+  }, [writeInfoAxios]);
 
   // 함수
   const imgArrChange = (curr) => {
@@ -77,14 +136,15 @@ const Post = () => {
           </Sider>
           <Layout>
             <Header className="headerStyle">
-              <PostUserInfo profile={writeInfoaxios} />
+              <PostUserInfo profile={writeInfoAxios.post} image={image[0]} />
+              {dayShow}
             </Header>
             <Content className="contentStyle1">
-              <PostUserInfo profile={writeInfoaxios} />
-              {writeInfoaxios.writeContent}
+              <PostUserInfo profile={writeInfoAxios.post} image={image[0]} />
+              {writeInfoAxios.post.post_content}
             </Content>
             <Content className="contentStyle2">
-              <PostComment profile={commentInfoaxios} />
+              <PostComment profile={commentInfoAxios} image={image[1]} />
             </Content>
             <Footer className="footerStyle">
               <PostButton />

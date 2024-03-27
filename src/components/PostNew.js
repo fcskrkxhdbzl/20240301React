@@ -5,6 +5,7 @@ import "../styles/Post.css";
 // import component
 import PostUserInfo from "./PostUserInfo.js";
 import PostInputImage from "./PostInputImage.js";
+import PostSearchPeople from "./PostSearchPeople.js";
 
 const writeInfoaxios = {
   writerProfile: "unknown",
@@ -71,7 +72,9 @@ const PostNew = () => {
                 placeholder="문구를 입력하세요"
               />
             </Content>
-            {/* <Content className="contentStyle4">위치추가</Content> */}
+            <Content className="contentStyle4">
+              <PostSearchPeople />
+            </Content>
             <Content className="contentStyle5">
               <Collapse
                 size="small"

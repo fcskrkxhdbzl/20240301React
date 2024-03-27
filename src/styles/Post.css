@@ -2,17 +2,17 @@
 /*  */
 /* antd tag style */
 .headerStyle {
-  color: #000;
   padding-inline: 10px;
   height: 50px;
-  background-color: #fff;
+  color: #fff;
+  background-color: rgb(41, 39, 39);
 }
 .contentStyle1 {
   min-height: 50px;
   height: 400px;
   overflow: auto;
-  color: #000;
-  background-color: #fff;
+  color: #fff;
+  background-color: rgb(41, 39, 39);
 }
 .contentStyle1::-webkit-scrollbar {
   display: none;
@@ -20,7 +20,7 @@
 .contentStyle2 {
   min-height: 50px;
   overflow: auto;
-  color: #000;
+  color: #fff;
   background-color: #fff;
 }
 .contentStyle2::-webkit-scrollbar {
@@ -34,11 +34,11 @@
   width: 100%;
   height: 100%;
 }
-/* .contentStyle4 {
-  height: 10%;
-  background-color: aquamarine;
+.contentStyle4 {
+  height: 5%;
+  background-color: #fff;
   box-sizing: content-box !important;
-} */
+}
 .contentStyle5 {
   height: 10%;
   background-color: #fff;
