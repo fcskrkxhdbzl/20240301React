@@ -42,20 +42,28 @@ const imgArr = ["red", "orange", "yellow", "green", "blue", "sodomy", "purple"];
 // home.js에서 props (props.currIndex) 받기
 const Post = (props) => {
   const postId = props.currIndex;
-  // useEffect????? 확인좀
+
+  // 변수
+  const { Header, Footer, Sider, Content } = Layout;
+  const [writeInfoAxios, setWriteInfoAxios] = useState({
+    post: { post_content: "", user_id: "" },
+    diffDate: 0,
+  });
+  const [commentInfoAxios, setCommentInfoAxios] = useState([]);
+  const [dayShow, setDayShow] = useState();
+  const [image, setImage] = useState(["man", "circle_1"]);
+
+  // 모든 렌더링이 완료된 후, 첫번째인자(콜백함수)실행->무한렌더링방지를위해 []전달해서 최초1회 실행
+  // 아니면 postdetail을 여는 버튼에 axios 걸기
   useEffect(() => {
     postDetailAxios();
-    //commentAxios();
+    commentAxios();
   }, []);
   const postDetailAxios = async () => {
+    const param = new FormData();
+    param.append("postNo", postId);
     await axiosConfig
-      .post(
-        "postDetail",
-        JSON.stringify({ postId: "hello", postNo: "world" })
-        // {
-        //   headers: { "Content-Type": "application/json" },
-        // }
-      )
+      .post("postDetail", param)
       .then((res) => {
         console.log(res.data);
         setWriteInfoAxios(res.data);
@@ -65,8 +73,10 @@ const Post = (props) => {
       });
   };
   const commentAxios = async () => {
+    const param = new FormData();
+    param.append("postNo", postId);
     await axiosConfig
-      .post("commentList", null, { params: { postNo: postId } })
+      .post("commentList", param)
       .then((res) => {
         console.log("commentresdasta::::::", res.data);
         setCommentInfoAxios(res.data);
@@ -75,22 +85,6 @@ const Post = (props) => {
         console.log(error.config);
       });
   };
-
-  // 변수
-  const { Header, Footer, Sider, Content } = Layout;
-  const [writeInfoAxios, setWriteInfoAxios] = useState({
-    post: {
-      post_no: 0,
-      post_content: "",
-      user_no: 0,
-      post_new_date: "",
-      post_up_date: "",
-    },
-    diffDate: "",
-  });
-  const [commentInfoAxios, setCommentInfoAxios] = useState([]);
-  const [dayShow, setDayShow] = useState();
-  const [image, setImage] = useState(["man", "circle_1"]);
 
   useEffect(() => {
     const diff = Math.abs(writeInfoAxios.diffDate);
@@ -113,6 +107,7 @@ const Post = (props) => {
   const imgArrChange = (curr) => {
     console.log(curr);
   };
+
   return (
     <>
       <Flex className="flexStyle">
@@ -136,15 +131,26 @@ const Post = (props) => {
           </Sider>
           <Layout>
             <Header className="headerStyle">
-              <PostUserInfo profile={writeInfoAxios.post} image={image[0]} />
+              <PostUserInfo
+                profile={writeInfoAxios && writeInfoAxios.post}
+                image={image[0]}
+              />
               {dayShow}
             </Header>
             <Content className="contentStyle1">
-              <PostUserInfo profile={writeInfoAxios.post} image={image[0]} />
-              {writeInfoAxios.post.post_content}
+              <PostUserInfo
+                profile={writeInfoAxios && writeInfoAxios.post}
+                image={image[0]}
+              />
+              {writeInfoAxios && writeInfoAxios.post.postContent}
             </Content>
             <Content className="contentStyle2">
-              <PostComment profile={commentInfoAxios} image={image[1]} />
+              <PostComment
+                profile={commentInfoAxios}
+                image={image[1]}
+                setCommentInfoAxios={setCommentInfoAxios}
+                currIndex={postId}
+              />
             </Content>
             <Footer className="footerStyle">
               <PostButton />

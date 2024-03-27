@@ -4,7 +4,7 @@ import "../styles/Post.css";
 // 작성자 사진, 작성자 이름
 const PostUserInfo = (props) => {
   const profile = props.image;
-  const profileName = props.profile.user_id;
+  const profileName = props.profile.userId;
   return (
     <>
       <div className="postHeaderDiv">
