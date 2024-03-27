@@ -13,8 +13,8 @@ import Bookmark from "./../../assets/explore/bookmark.png";
 
 const Comment = (props) => {
   const comment = props.comment;
-  const profileId = comment.profile_id;
-  const mainText = comment.comments;
+  const profileId = comment.userId;
+  const mainText = comment.commentContent;
   return (
     <div>
       {/* // <!--comment-->*/}
@@ -35,16 +35,20 @@ const Comment = (props) => {
   );
 };
 const Article = (props) => {
-  const posterId = props.article.id;
-  const url = props.article.url;
-
   // const item = props.article;
-  const item = DummyData[0];
-  const likeNum = props.article.height;
+  // const item = DummyData[0];
+  // const mainText = item.main_text;
+  // const commentList = item.comment_list.map((ele, idx, arr) => {
+  //   return <Comment comment={ele} />;
+  // });
   // const posterId = item.profile_id;
   // const likeNum = item.like_num;
-  const mainText = item.main_text;
-  const commentList = item.comment_list.map((ele, idx, arr) => {
+
+  const posterId = props.article.userNo;
+  const url = props.article.url;
+  const likeNum = props.article.likeNum;
+  const mainText = props.article.postContent;
+  const commentList = props.article.commentList.map((ele, idx, arr) => {
     return <Comment comment={ele} />;
   });
   return (

@@ -5,6 +5,7 @@ import axiosConfig from "services/axiosConfig";
 const Explore = () => {
   const targetRef = useRef();
   const [dogDataList, setDogDataList] = useState([]);
+  const [exploreList, setExploreList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(0);
 
@@ -19,12 +20,13 @@ const Explore = () => {
     setIsLoading(true);
 
     // 데이터 불러오기
-    console.log(page);
-    const url = `https://api.thedogapi.com/v1/images/search?size=small&format=json&has_breeds=true&order=ASC&page=${page}&limit=10`;
-    await axiosConfig.get(url).then((res) => {
-      if (res.data && res.data.length > 0) {
-        setDogDataList((prevData) => {
-          return prevData.concat(res.data);
+    const param = new FormData();
+    // param.append("pageIndex", page);
+    param.append("pageIndex", 0);
+    axiosConfig.post("explore/list", param).then((res) => {
+      if (res.data && res.data.exploreList && res.data.exploreList.length > 0) {
+        setExploreList((prevData) => {
+          return prevData.concat(res.data.exploreList);
         });
       }
     });
@@ -58,18 +60,42 @@ const Explore = () => {
     // observer.unobserve(viewTarget);
   }, []);
 
+  // 마운트 시에 최초에만 실행할 함수
+  useEffect(() => {
+    const url = `https://api.thedogapi.com/v1/images/search?size=small&format=json&has_breeds=true&order=ASC&page=1&limit=10`;
+    axiosConfig.get(url).then((res) => {
+      if (res.data && res.data.length > 0) {
+        setDogDataList((prevData) => {
+          return prevData.concat(res.data);
+        });
+      }
+    });
+  }, []);
+
   // 페이지 변경 시에만 실행할 함수
   useEffect(() => {
     fetchData();
   }, [page]);
 
   // 게시글 목록을 출력할 요소 리스트로 만들기
-  const articleList = dogDataList.map((ele, idx, arr) => {
+  const articleList = exploreList.map((ele, idx, arr) => {
+    // 임시 강아지 사진
+    ele.url = dogDataList[ele.postNo] ? dogDataList[ele.postNo].url : "";
     return <Article article={ele} />;
   });
 
+  const testHandler = () => {
+    axiosConfig.get("explore/list").then((res) => {
+      console.log("testHandler res >>>>>>>>>>>>>>>>>>>>>>");
+      console.log(res);
+    });
+  };
+
   return (
     <div className="explore">
+      <div>
+        <button onClick={testHandler}>run test</button>
+      </div>
       {articleList}
       <div className="view-target" id="view-target" ref={targetRef}>
         <h1>target here</h1>
