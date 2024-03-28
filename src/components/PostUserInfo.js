@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Post.css";
+import "styles/Post.css";
 
 // 작성자 사진, 작성자 이름
 const PostUserInfo = (props) => {

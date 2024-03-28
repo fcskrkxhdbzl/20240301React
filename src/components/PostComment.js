@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import "../styles/Post.css";
-import PostUserInfo from "./PostUserInfo";
+import "styles/Post.css";
+import PostUserInfo from "components/PostUserInfo";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
-import axiosConfig from "../services/axiosConfig";
+import axiosConfig from "services/axiosConfig";
 
 const PostComment = (props) => {
   console.log(props.profile.comments);

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/Post.css";
+import "styles/Post.css";
 
 import { FiSend } from "react-icons/fi";
 import { FaRegHeart, FaHeart, FaRegComment } from "react-icons/fa";
