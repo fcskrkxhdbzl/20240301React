@@ -12,8 +12,6 @@ function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/Home" element={<Posts />} />
-      </Route>
-      <Route element={<Layout />}>
         <Route path="/*" element={<NotFound />} />
       </Route>
       <Route element={<Feed />}>
