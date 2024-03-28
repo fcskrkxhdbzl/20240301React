@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+import { Modal } from "antd";
 
 // 인스타그램 CSS API
 import {
@@ -20,7 +21,17 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import GroupIcon from "@mui/icons-material/Group";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
+import PostNew from "components/PostNew";
+
 function Header() {
+  const [isPostNewOpen, setIsPostNewOpen] = useState(false);
+  const postNewShow = () => {
+    setIsPostNewOpen(true);
+  };
+  const postNewHide = () => {
+    setIsPostNewOpen(false);
+  };
+
   return (
     <AppBar position="static" color="transparent" elevation={1}>
       <Toolbar>
@@ -76,7 +87,16 @@ function Header() {
                 </Badge>
               </IconButton>
               <IconButton>
-                <AddCircleOutlineIcon />
+                <AddCircleOutlineIcon onClick={postNewShow} />
+                <Modal
+                  open={isPostNewOpen}
+                  title="새 게시물 작성"
+                  width={"90%"}
+                  footer={null}
+                  onCancel={postNewHide}
+                >
+                  <PostNew />
+                </Modal>
               </IconButton>
               <IconButton>
                 <GroupIcon />

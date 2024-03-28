@@ -73,12 +73,15 @@
 /* 게시물 상세 왼쪽 */
 .slick-slide .slick-active .slick-current {
   box-sizing: border-box;
-  /* width: 50%; */
-  height: 350px;
+  width: 500px;
+  height: 500px;
+  overflow: hidden;
   content: "";
 }
 .imgSize {
-  height: 100%;
+  width: 800px;
+  height: 400px;
+  overflow: hidden;
 }
 /**/
 
