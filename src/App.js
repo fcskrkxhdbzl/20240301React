@@ -1,8 +1,8 @@
+import NotFound from "./pages/NotFound";
 import Layout from "./components/layout/Layout";
 import MyProfile from "./pages/profile/MyProfile";
 import Feed from "./components/layout/Feed";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import NotFound from "./pages/NotFound";
 import Post from "./components/Post";
 import Explore from "./pages/Explore";
 import Joinmember from "./pages/Joinmember";

@@ -1,78 +1,66 @@
 .App {
-    text-align: center;
+  text-align: center;
 }
 
 .App-logo {
-    height: 40vmin;
-    pointer-events: none;
+  height: 40vmin;
+  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
 .App-header {
-    background-color: #282d36;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+  background-color: #282d36;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
 .App-link {
-    color: #61dafb;
+  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .modalcontrol > div:nth-child(2) > div:nth-child(1) > div:nth-child(4) {
-    background-color: black;
-    display: none;
+  background-color: black;
+  display: none;
 }
 
 .modal-scroll::-webkit-scrollbar {
-    display: none;
+  display: none;
+}
+
+/* class="ant-btn css-dev-only-do-not-override-djtmh8 ant-btn-primary custom-button" */
+.custom-button {
+  background-color: white;
+  border-color: white;
+  color: black;
 }
 
 .custom-button {
-    background-color: white;
-    border-color: black;
-    color: black;
-}
-
-.custom-button {
-    width: 100px; /* 버튼의 너비 */
-    height: 40px; /* 버튼의 높이 */
-    line-height: 40px; /* 버튼의 높이와 일치하는 줄 높이 설정 */
-    padding: 0 20px; /* 버튼의 내부 여백 설정 */
+  width: 100px; /* 버튼의 너비 */
+  height: 40px; /* 버튼의 높이 */
+  line-height: 40px; /* 버튼의 높이와 일치하는 줄 높이 설정 */
+  padding: 0 20px; /* 버튼의 내부 여백 설정 */
 }
 
 .custom-button .anticon {
-    font-size: 16px; /* 스핀 아이콘의 크기 */
-    margin-right: 8px; /* 스핀 아이콘과 버튼 텍스트 사이의 간격 설정 */
+  font-size: 16px; /* 스핀 아이콘의 크기 */
+  margin-right: 8px; /* 스핀 아이콘과 버튼 텍스트 사이의 간격 설정 */
 }
-/* .modalcontrol {
-  width: 30%;
-  height: 30%;
-}
-
-.ant-modal-body {
-  max-height: calc (100vh - 200px);
-  overflow-y: hidden;
-}  */
-
-/* .ant-modal {
-  overflow-y: initial limportant;
-} */

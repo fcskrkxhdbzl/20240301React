@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { faker } from "@faker-js/faker";
+import "App.css";
 import {
   Avatar,
   Box,
@@ -62,7 +63,7 @@ function MyProfile() {
                 {myProfile?.username}
 
                 <Button sx={{ marginLeft: "2rem" }}>
-                  <FollowerModal />
+                  <Following />
                 </Button>
 
                 <Button
@@ -82,8 +83,12 @@ function MyProfile() {
               </Box>
               <Box sx={{ display: "flex", marginTop: "1rem" }}>
                 <Typography>게시글</Typography>
-                <Typography>팔로워</Typography>
-                <Typography>팔로우</Typography>
+                <Typography>
+                  <FollowModal />
+                </Typography>
+                <Typography>
+                  <FollowerModal />
+                </Typography>
               </Box>
               {/* <Box sx={{ marginTop: "2rem" }}>
                 
