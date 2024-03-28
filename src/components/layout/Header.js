@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { Modal } from "antd";
+
+import { Faker, faker } from "@faker-js/faker";
 
 // 인스타그램 CSS API
 import {
@@ -32,6 +34,14 @@ function Header() {
     setIsPostNewOpen(false);
   };
 
+  const [miniAvatar, setMiniAvatar] = useState();
+
+  React.useEffect(() => {
+    const falseMiniAvatar = {
+      avatar: faker.internet.avatar(),
+    };
+    setMiniAvatar(falseMiniAvatar);
+  }, []);
   return (
     <AppBar position="static" color="transparent" elevation={1}>
       <Toolbar>
@@ -106,7 +116,7 @@ function Header() {
               </IconButton>
             </Box>
             <Link to="/MyProfile">
-              <Avatar alt="Remy Sharp" src="https://" />
+              <Avatar alt="Remy Sharp" src={miniAvatar?.avatar} />
             </Link>
           </Box>
         </Box>

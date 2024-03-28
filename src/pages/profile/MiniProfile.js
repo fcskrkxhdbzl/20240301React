@@ -52,10 +52,10 @@ function MiniProfile() {
               sx={{ width: "350px" }}
               fontWeight={600}
             >
-              {profile?.email}
+              {profile?.username}
             </Typography>
           }
-          secondary={profile?.username}
+          secondary={profile?.email}
         />
       </ListItem>
     </List>

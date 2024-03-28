@@ -16,6 +16,8 @@ import {
   Typography,
 } from "@mui/material";
 import SettingsIcon from "@mui/icons-material/Settings";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import PeopleIcon from "@mui/icons-material/People";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 
 import { Link } from "react-router-dom";
@@ -82,23 +84,19 @@ function MyProfile() {
                 </Button>
               </Box>
               <Box sx={{ display: "flex", marginTop: "1rem" }}>
-                <Typography>게시글</Typography>
-                <Typography>
-                  <FollowModal />
+                <Typography variant="body2">게시글 90</Typography>
+                <Typography variant="body2" sx={{ marginLeft: "1rem" }}>
+                  팔로잉 2
                 </Typography>
-                <Typography>
-                  <FollowerModal />
+                <Typography variant="body2" sx={{ marginLeft: "1rem" }}>
+                  팔로워 2
                 </Typography>
               </Box>
-              {/* <Box sx={{ marginTop: "2rem" }}>
-                
-                
-              </Box> */}
-              <Card>
+              <Card sx={{ marginTop: "5rem" }}>
                 <CardContent>
-                  <Typography>소개글 제목</Typography>
+                  <Typography fontWeight={600}>안녕하세요</Typography>
                   <Typography sx={{ marginTop: "1rem" }}>
-                    소개글 텍스트
+                    점심시간 너무 늦지 않나요
                   </Typography>
                 </CardContent>
               </Card>
@@ -109,16 +107,16 @@ function MyProfile() {
       <hr />
       <Box textAlign="center">
         <Button>
-          <FormatListBulletedIcon />
-          게시물
+          <FormatListBulletedIcon sx={{ color: "black" }} />
+          게시물 버튼
         </Button>
         <Button>
-          <FormatListBulletedIcon />
-          게시물
+          <BookmarkIcon sx={{ backgroundColor: "white", color: "black" }} />
+          <FollowModal />
         </Button>
         <Button>
-          <FormatListBulletedIcon />
-          게시물
+          <PeopleIcon sx={{ color: "black" }} />
+          <FollowerModal />
         </Button>
       </Box>
       <Box>

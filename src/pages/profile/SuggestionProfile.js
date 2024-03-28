@@ -60,10 +60,10 @@ function SuggestionProfile() {
                   sx={{ width: "250px" }}
                   fontWeight={600}
                 >
-                  {suggestion.email}
+                  {suggestion.username}
                 </Typography>
               }
-              secondary={suggestion.username}
+              secondary={suggestion.email}
             />
           </ListItem>
         ))}
