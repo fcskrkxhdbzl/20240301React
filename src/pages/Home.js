@@ -6,10 +6,20 @@ import "./../App.css";
 import Post from "../components/Post";
 import PostNew from "../components/PostNew";
 
+import FollowerModal from "../components/Follow/FollowerModal";
+import FollowModal from "../components/Follow/FollowModal";
+import Following from "../components/Follow/Following";
+import { useParams } from "react-router-dom";
+
 const Home = () => {
   const [isPostOpen, setIsPostOpen] = useState(false);
   const [isPostNewOpen, setIsPostNewOpen] = useState(false);
   const [selPostIndex, setSelPostIndex] = useState(1); // 게시물id값 변수
+
+  //팔로우
+  const [open, setOpen] = useState(false);
+  const userNum = useParams();
+
   const postShow = () => {
     setIsPostOpen(true);
     // setSelPostIndex(num) ---> 게시물뿌리는 map문이 생기면 그 게시물id값 받아오기
@@ -29,6 +39,11 @@ const Home = () => {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>새내기 최초 테스트 화면</p>
+
+        <FollowerModal open={open} closeModal={setOpen} userinfo={userNum} />
+        <FollowModal open={open} closeModal={setOpen} userinfo={userNum} />
+        <Following open={open} closeModal={setOpen} userinfo={userNum} />
+
         <p>SEANEAGI</p>
         {/* map으로 수정 https://www.instagram.com/healing.cook/ https://www.instagram.com/p/C4x5qinS_qf/  */}
         <p onClick={postShow}>포스트상세보기테스트트트트</p>
@@ -59,7 +74,10 @@ const Home = () => {
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
-        ></a>
+          onClick={() => window.open("https://reactjs.org", "_blank")}
+        >
+          React 공식 웹사이트로 이동하기
+        </a>
       </header>
     </div>
   );
