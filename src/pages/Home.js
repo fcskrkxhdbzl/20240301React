@@ -1,10 +1,6 @@
-import React, { useState } from "react";
-import logo from "./../logo.svg";
-import { Modal } from "antd";
-import "./../App.css";
-// import component
-import Post from "../components/Post";
-import PostNew from "../components/PostNew";
+import React from "react";
+import logo from "logo.svg";
+import "App.css";
 
 import FollowerModal from "../components/Follow/FollowerModal";
 import FollowModal from "../components/Follow/FollowModal";
@@ -12,27 +8,9 @@ import Following from "../components/Follow/Following";
 import { useParams } from "react-router-dom";
 
 const Home = () => {
-  const [isPostOpen, setIsPostOpen] = useState(false);
-  const [isPostNewOpen, setIsPostNewOpen] = useState(false);
-  const [selPostIndex, setSelPostIndex] = useState(1); // 게시물id값 변수
-
   //팔로우
   const [open, setOpen] = useState(false);
   const userNum = useParams();
-
-  const postShow = () => {
-    setIsPostOpen(true);
-    // setSelPostIndex(num) ---> 게시물뿌리는 map문이 생기면 그 게시물id값 받아오기
-  };
-  const posHide = () => {
-    setIsPostOpen(false);
-  };
-  const postNewShow = () => {
-    setIsPostNewOpen(true);
-  };
-  const postNewHide = () => {
-    setIsPostNewOpen(false);
-  };
 
   return (
     <div className="App">
@@ -45,30 +23,6 @@ const Home = () => {
         <Following open={open} closeModal={setOpen} userinfo={userNum} />
 
         <p>SEANEAGI</p>
-        {/* map으로 수정 https://www.instagram.com/healing.cook/ https://www.instagram.com/p/C4x5qinS_qf/  */}
-        <p onClick={postShow}>포스트상세보기테스트트트트</p>
-        <Modal
-          open={isPostOpen}
-          title="게시물 상세보기"
-          width={"90%"}
-          footer={null}
-          onCancel={posHide}
-        >
-          <Post
-            currIndex={selPostIndex} // ---> 모달열리면 보여지는 컴포넌트에 게시물id값 등 정보 넘겨주기
-          />
-        </Modal>
-        {/* //  end map   */}
-        <p onClick={postNewShow}>새글작성</p>
-        <Modal
-          open={isPostNewOpen}
-          title="새 게시물 작성"
-          width={"90%"}
-          footer={null}
-          onCancel={postNewHide}
-        >
-          <PostNew />
-        </Modal>
         <a
           className="App-link"
           href="https://reactjs.org"

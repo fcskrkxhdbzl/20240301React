@@ -95,7 +95,7 @@ const Post = (props) => {
                 <div className="imgDiv">
                   <img
                     key={index}
-                    src={require(`../assets/postImg/${item}.jpg`)}
+                    src={require(`assets/postImg/${item}.jpg`)}
                     className="imgSize"
                   />
                 </div>
