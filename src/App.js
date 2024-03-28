@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 //import Home from "./pages/Home";
 import Layout from "./components/Layout";
+import PostNew from "./components/PostNew";
+import Post from "./components/Post";
 import Explore from "./pages/Explore";
 import Joinmember from "./pages/Joinmember";
 import Login from "./pages/Login";

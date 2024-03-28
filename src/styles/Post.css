@@ -1,0 +1,178 @@
+/*  */
+/*  */
+/* antd tag style */
+.headerStyle {
+  padding-inline: 10px;
+  height: 50px;
+  color: #fff;
+  background-color: rgb(41, 39, 39);
+}
+.contentStyle1 {
+  min-height: 50px;
+  height: 400px;
+  overflow: auto;
+  color: #fff;
+  background-color: rgb(41, 39, 39);
+}
+.contentStyle1::-webkit-scrollbar {
+  display: none;
+}
+.contentStyle2 {
+  min-height: 50px;
+  overflow: auto;
+  color: #fff;
+  background-color: #fff;
+}
+.contentStyle2::-webkit-scrollbar {
+  display: none;
+}
+.contentStyle3 {
+  height: 70%;
+  background-color: aqua;
+}
+.contentStyle3 > textarea {
+  width: 100%;
+  height: 100%;
+}
+.contentStyle4 {
+  height: 5%;
+  background-color: #fff;
+  box-sizing: content-box !important;
+}
+.contentStyle5 {
+  height: 10%;
+  background-color: #fff;
+  padding: 0px 0px 10px 0px;
+  box-sizing: content-box !important;
+}
+.siderStyle {
+  border: 2px solid #fff;
+  border-top-left-radius: 2%;
+  border-bottom-left-radius: 2%;
+  background-color: #fff !important;
+}
+.footerStyle {
+  padding: 10px 10px;
+  height: 80px;
+  background-color: #fff;
+}
+.layoutStyle {
+  width: calc(100% - 8px);
+  max-width: calc(100% - 8px);
+  background-color: #fff;
+}
+.flexStyle {
+  margin: 5%, 10%;
+  height: 80vh;
+}
+/**/
+
+/*  */
+/*  */
+/* Post.js, PostNew.js, PostComment.js, PostButton.js, PostUserInfo.js */
+/* 게시물 상세 왼쪽 */
+.slick-slide .slick-active .slick-current {
+  box-sizing: border-box;
+  /* width: 50%; */
+  height: 350px;
+  content: "";
+}
+.imgSize {
+  height: 100%;
+}
+/**/
+
+/* 게시물 상세 오른쪽 (Header) */
+.postHeaderDiv {
+  display: inline-table;
+  line-height: normal;
+  margin: 5px 10px;
+}
+.postHeaderDiv span {
+  display: table-cell;
+  vertical-align: middle;
+}
+.postHeaderDiv > img {
+  width: 30px;
+  display: table-cell;
+  vertical-align: middle;
+}
+/**/
+
+/* 게시물 상세 오른쪽 (Content2) */
+.postContent2Div {
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.postContent2Div > div:nth-child(1) {
+  width: 90%;
+}
+.postContent2Div > div:nth-child(1) > div {
+  display: inline-table;
+  vertical-align: sub;
+}
+.postContent2Div > div:nth-child(1) > span:nth-child(2),
+span:nth-child(6) {
+  color: gray;
+  font-size: 8pt;
+}
+.recommBtn {
+  background-color: transparent;
+  border: 0;
+  color: gray;
+  font-size: 8pt;
+  cursor: pointer;
+}
+.postContent2Div > div:nth-child(1) > span:nth-child(4) {
+  color: red;
+  font-size: 9pt;
+}
+.postContent2Div > div:nth-child(1) > p {
+  color: dimgray;
+  font-size: 8pt;
+  margin-left: 7%;
+}
+.likeCommBtn {
+  background-color: transparent;
+  border: 0;
+  margin-top: 100%;
+  font-size: 1.05em;
+  color: black;
+  cursor: pointer;
+}
+/**/
+
+/* 게시물 상세 오른쪽 (Footer) */
+.postFooterDiv button {
+  background-color: transparent;
+  border: 0;
+  font-size: 1.05em;
+  color: black;
+}
+.postFooterDiv > div:nth-child(1) > div {
+  float: right;
+  font-size: 1.1em;
+}
+.postFooterDiv div:nth-child(2),
+div:nth-child(3) {
+  color: black;
+  font-size: 7pt;
+}
+.ant-collapse-content-box {
+  padding: 0 !important;
+}
+.ant-collapse-content-box > p {
+  margin: 0 !important;
+}
+.collapseToggleBtn {
+  border-radius: 34px;
+}
+.newPostSubmitBtn {
+  width: 20%;
+  background-color: #fff;
+  margin: auto;
+  border: 1px solid gray;
+  border-radius: 20%;
+}
+/**/
