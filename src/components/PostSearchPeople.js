@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axiosConfig from "services/axiosConfig";
+import axiosConfig from "../services/axiosConfig";
 
 const PostSearchPeople = () => {
   // 변수

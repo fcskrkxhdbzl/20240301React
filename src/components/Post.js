@@ -6,7 +6,7 @@ import "../styles/Post.css";
 import PostUserInfo from "./PostUserInfo.js";
 import PostButton from "./PostButton.js";
 import PostComment from "./PostComment.js";
-import axiosConfig from "services/axiosConfig";
+import axiosConfig from "../services/axiosConfig";
 
 //// props로 받은 게시물id로 백단에서 받아올 정보들: 게시물작성유저정보/게시물내용/게시물사진/ (백)
 const imgArr = ["blue", "orange", "yellow", "green", "red", "sodomy", "purple"];
