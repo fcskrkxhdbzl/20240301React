@@ -6,7 +6,7 @@ import Header from "./Header";
 import MiniProfile from "../../pages/profile/MiniProfile";
 import Stories from "../../pages/story/Stories";
 import SuggestionProfile from "../../pages/profile/SuggestionProfile";
-import Posts from "../../pages/testPost/Posts";
+import Explore from "../../pages/Explore";
 
 import "../../styles/Layout.css";
 
@@ -32,7 +32,7 @@ const Layout = () => {
           <Box component="section" sx={{ gridColumn: "1/3" }}>
             <Stories />
             {/* 게시글 */}
-            <Posts />
+            <Explore />
           </Box>
 
           <Box
