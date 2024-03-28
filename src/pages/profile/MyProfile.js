@@ -22,6 +22,7 @@ import { Link } from "react-router-dom";
 import FollowModal from "../../components/Follow/FollowModal";
 import FollowerModal from "../../components/Follow/FollowerModal";
 import Following from "../../components/Follow/Following";
+import PostUserPersonal from "components/PostUserPersonal";
 
 function MyProfile() {
   const [myProfile, setMyProfile] = React.useState();
@@ -115,7 +116,9 @@ function MyProfile() {
           게시물
         </Button>
       </Box>
-      <Box></Box>
+      <Box>
+        <PostUserPersonal />
+      </Box>
     </>
   );
 }
