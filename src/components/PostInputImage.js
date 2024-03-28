@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "../styles/Post.css";
+import "styles/Post.css";
 
 const PostInputImage = (props) => {
   //변수

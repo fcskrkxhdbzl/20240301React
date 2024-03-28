@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Flex, Layout, Carousel, Collapse } from "antd";
-import "../styles/Post.css";
+import "styles/Post.css";
 // import component
-import PostUserInfo from "./PostUserInfo.js";
-import PostInputImage from "./PostInputImage.js";
-import PostSearchPeople from "./PostSearchPeople.js";
+import PostUserInfo from "components/PostUserInfo.js";
+import PostInputImage from "components/PostInputImage.js";
+import PostSearchPeople from "components/PostSearchPeople.js";
 
 const writeInfoaxios = {
   //세션에 값 받아오기
