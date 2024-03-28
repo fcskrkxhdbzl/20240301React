@@ -8,8 +8,8 @@ const PostUserInfo = (props) => {
   return (
     <>
       <div className="postHeaderDiv">
-        <img src={require(`../assets/${profile}.jpg`)} />
-        <span>{profileName}</span>
+        <img src={require(`../assets/postImg/${profile}.jpg`)} />
+        <span>{profileName !== "" ? profileName : "로그인이필요합니다"}</span>
       </div>
     </>
   );

@@ -9,35 +9,7 @@ import PostComment from "./PostComment.js";
 import axiosConfig from "services/axiosConfig";
 
 //// props로 받은 게시물id로 백단에서 받아올 정보들: 게시물작성유저정보/게시물내용/게시물사진/ (백)
-const imgArr = ["red", "orange", "yellow", "green", "blue", "sodomy", "purple"];
-
-// const commentInfoaxios = [
-//   {
-//     writernum: 3,
-//     image: "circle_1",
-//     writer: "consumer",
-//     writeContent: "바나나푸딩바나나푸딩바나나푸딩바나나푸딩",
-//     writeDate: "2024.03.18",
-//     fewDay: 0, // 작성일-now = 작성경과일 계산된 거 받아오기
-//     addlike: 0,
-//   },
-//   {
-//     writernum: 2,
-//     image: "circle_1",
-//     writer: "consumer2",
-//     writeContent: "딸기푸딩딸기푸딩딸기푸딩딸기푸딩",
-//     writeDate: "2024.03.18",
-//     fewDay: 0, // 작성일-now = 작성경과일 계산된 거 받아오기
-//     addlike: 0,
-//   },
-// ];
-
-//
-//
-//
-//
-//
-//
+const imgArr = ["blue", "orange", "yellow", "green", "red", "sodomy", "purple"];
 
 // home.js에서 props (props.currIndex) 받기
 const Post = (props) => {
@@ -123,7 +95,8 @@ const Post = (props) => {
                 <div className="imgDiv">
                   <img
                     key={index}
-                    src={require(`../assets/testColor/${item}.jpg`)}
+                    src={require(`../assets/postImg/${item}.jpg`)}
+                    className="imgSize"
                   />
                 </div>
               ))}

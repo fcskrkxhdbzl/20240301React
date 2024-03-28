@@ -8,9 +8,8 @@ import PostInputImage from "./PostInputImage.js";
 import PostSearchPeople from "./PostSearchPeople.js";
 
 const writeInfoaxios = {
-  writerProfile: "unknown",
-  writer: "pupu",
-  writeDate: "2024.03.16",
+  //세션에 값 받아오기
+  userId: "pupu",
 };
 const collapses = (
   <input type="checkbox" id="collapseToggleBtn" className="collapseToggleBtn" />
@@ -54,17 +53,18 @@ const PostNew = () => {
         <Layout className="layoutStyle">
           <Sider width="60%" className="siderStyle">
             <Carousel afterChange={imgArrChange}>
-              {upImgUrlList.map((item, index) => (
-                <div key={index}>
-                  <img src={item} />
-                </div>
-              ))}
+              {upImgUrlList &&
+                upImgUrlList.map((item, index) => (
+                  <div key={index} className="imgDiv">
+                    <img src={item} className="imgSize" />
+                  </div>
+                ))}
             </Carousel>
             <PostInputImage setUpImgUrlList={setUpImgUrlList} />
           </Sider>
           <Layout className="layoutStyle">
             <Header className="headerStyle">
-              <PostUserInfo profile={writeInfoaxios} />
+              <PostUserInfo profile={writeInfoaxios} image={"unknown"} />
             </Header>
             <Content className="contentStyle3">
               <textarea
