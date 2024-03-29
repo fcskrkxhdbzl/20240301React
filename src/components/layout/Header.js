@@ -15,6 +15,7 @@ import {
   Toolbar,
   InputAdornment,
   Badge,
+  Button,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home";
@@ -74,7 +75,9 @@ function Header() {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <SearchIcon />
+                    <Link to="/explore">
+                      <SearchIcon sx={{ marginTop: "0.5rem" }} />
+                    </Link>
                   </InputAdornment>
                 ),
               }}
