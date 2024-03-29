@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { Modal } from "antd";
+import { useNavigate } from "react-router-dom";
 
 import { Faker, faker } from "@faker-js/faker";
 
@@ -27,6 +28,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PostNew from "components/PostNew";
 
 function Header() {
+  const navigate = useNavigate();
   const [isPostNewOpen, setIsPostNewOpen] = useState(false);
   const postNewShow = () => {
     setIsPostNewOpen(true);
@@ -70,6 +72,11 @@ function Header() {
           {/* 검색바 */}
           <Box>
             <TextField
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  navigate("/explore");
+                }
+              }}
               id="input-with-icon-textfield"
               placeholder="검색"
               InputProps={{
